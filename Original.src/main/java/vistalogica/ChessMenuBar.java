@@ -8,18 +8,16 @@ import vistainterfaz.ChessPanel;
 
 // -------------------------------------------------------------------------
 /**
- * Represents the north menu-bar that contains various controls for the game.
+ * Representa la barra de menú norte que contiene varios controles para el juego.
  *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public class ChessMenuBar
         extends JMenuBar {
-    // ----------------------------------------------------------
-    /**
-     * Create a new ChessMenuBar object.
+
+	
+	
+	/**
+     * Crea un nuevo objeto ChessMenuBar.
      */
     public ChessMenuBar() {
         String[] menuCategories = { "File", "Options", "Help" };
@@ -38,20 +36,15 @@ public class ChessMenuBar
     }
 
     /**
-     * Listener for the north menu bar.
-     *
-     * @author Ben Katz (bakatz)
-     * @author Myles David II (davidmm2)
-     * @author Danielle Bushrow (dbushrow)
-     * @version 2010.11.17
+     * Listener (Oyente) para la barra de menú norte.
      */
     private class MenuListener
             implements ActionListener {
         /**
-         * Takes an appropriate action based on which menu button is clicked
+         * Realiza una acción apropiada en función del botón de menú pulsado.
          *
          * @param event
-         *              the mouse event from the source
+         *              el evento del ratón de la fuente
          */
         @Override
         public void actionPerformed(ActionEvent event) {
@@ -70,9 +63,9 @@ public class ChessMenuBar
         }
     }
 
-    // ----------------------------------------------------------
+
     /**
-     * Takes an appropriate action if the about button is clicked.
+     * Realiza una acción apropiada si se hace clic en el botón acerca de.
      */
     private void aboutHandler() {
         JOptionPane.showMessageDialog(
@@ -81,17 +74,19 @@ public class ChessMenuBar
                         + "Danielle Bushrow\n\nFinal Project for CS2114 @ VT");
     }
 
+    
+    
     /**
-     * Takes an appropriate action if the restart button is clicked.
+     * Realiza una acción apropiada si se pulsa el botón de reinicio.
      */
     private void restartHandler() {
         ((ChessPanel) this.getParent()).getGameEngine().reset();
     }
 
     /**
-     * Takes an appropriate action if the exit button is clicked.
-     * Uses Tony Allevato's code for exiting a GUI app without System.exit()
-     * calls.
+     * Realiza una acción apropiada si se pulsa el botón de salida.
+     * Utiliza el código de Tony Allevato para salir de una aplicación GUI sin llamadas a System.exit()
+     * llamadas.
      */
     private void exitHandler() {
         JOptionPane.showMessageDialog(this.getParent(), "Thanks for leaving"
@@ -108,7 +103,7 @@ public class ChessMenuBar
     }
 
     /**
-     * Takes an appropriate action if the toggle graveyard button is clicked.
+     * Realiza una acción apropiada si se pulsa el botón de alternar cementerio.
      */
     private void toggleGraveyardHandler() {
         ((ChessPanel) this.getParent()).getGraveyard(1).setVisible(
@@ -118,7 +113,7 @@ public class ChessMenuBar
     }
 
     /**
-     * Takes an appropriate action if the toggle game log button is clicked.
+     * Realiza una acción apropiada si se pulsa el botón de registro de partidas.
      */
     private void toggleGameLogHandler() {
         ((ChessPanel) this.getParent()).getGameLog().setVisible(

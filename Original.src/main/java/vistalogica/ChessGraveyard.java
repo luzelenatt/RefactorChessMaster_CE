@@ -7,19 +7,18 @@ import vistainterfaz.ChessGamePiece;
 
 // -------------------------------------------------------------------------
 /**
- * Represents the graveyard where pieces lie after being captured.
+ * Representa el cementerio donde yacen las piezas después de ser capturadas.
  *
  */
-public class ChessGraveyard
-        extends JPanel {
+public class ChessGraveyard extends JPanel {
     private String title;
 
     // ----------------------------------------------------------
     /**
-     * Create a new ChessGraveyard object.
+     * Crea un nuevo objeto ChessGraveyard.
      *
      * @param title
-     *              the title of the graveyard
+     * el título del cementerio
      */
     public ChessGraveyard(String title) {
         this.title = title;
@@ -27,12 +26,14 @@ public class ChessGraveyard
         this.setLayout(new GridLayout(8, 0));
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Adds a piece to the graveyard.
+     * Añade una pieza al cementerio.
      *
-     * @param piece
-     *              the GamePiece to add
+     * @param pieza
+     * la GamePiece a añadir
      */
     public void addPiece(ChessGamePiece piece) {
         piece.setPieceLocation(-1, -1);
@@ -43,10 +44,12 @@ public class ChessGraveyard
 
     // ----------------------------------------------------------
     /**
-     * Removes all pieces from the graveyard.
+     * Elimina todas las piezas del cementerio.
      */
     public void clearGraveyard() {
+    	
         this.removeAll();
         this.add(new JLabel(title));
+        
     }
 }
