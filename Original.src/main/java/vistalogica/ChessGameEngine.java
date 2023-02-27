@@ -12,7 +12,11 @@ import vistainterfaz.pieces.King;
 
 import java.awt.event.MouseEvent;
 
-
+// -------------------------------------------------------------------------
+/**
+* Este es el backend detrás del juego de ajedrez. Maneja los aspectos basados en turnos de
+* el juego, eventos de clic, y determina las condiciones de ganar/perder.
+ */
 public class ChessGameEngine {
     private ChessGamePiece currentPiece;
     private boolean firstClick;
@@ -23,8 +27,8 @@ public class ChessGameEngine {
 
     // ----------------------------------------------------------
     /**
-     * Create a new ChessGameEngine object. Accepts a fully-created
-     * ChessGameBoard. (i.e. all components rendered)
+     * Crea un nuevo objeto ChessGameEngine. Acepta un
+     * ChessGameBoard. (es decir, todos los componentes renderizados)
      *
      * @param board
      *              the reference ChessGameBoard
@@ -42,9 +46,11 @@ public class ChessGameEngine {
                         + "against Player 2 (black). BEGIN!");
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Resets the game to its original state.
+     * Restablece el juego a su estado original.
      */
     public void reset() {
         firstClick = true;
@@ -62,8 +68,9 @@ public class ChessGameEngine {
                         + "against Player 2 (black). BEGIN!");
     }
 
+    
     /**
-     * Switches the turn to be the next player's turn.
+     * Cambia el turno para que sea el turno del siguiente jugador.
      */
     private void nextTurn() {
         currentPlayer = (currentPlayer == 1) ? 2 : 1;
@@ -71,22 +78,29 @@ public class ChessGameEngine {
                 "It is now Player " + currentPlayer + "'s turn.");
     }
 
+    
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the current player. Used for determining the turn.
+     * Obtiene el jugador actual. Se utiliza para determinar el turno.
      *
-     * @return int the current player (1 or 2)
+     * @return int el jugador actual (1 o 2)
      */
     public int getCurrentPlayer() {
         return currentPlayer;
     }
 
+    
+    
+    
+    
     /**
-     * Determines if the requested player has legal moves.
+     * Determina si el jugador solicitado tiene movimientos legales.
      *
      * @param playerNum
-     *                  the player to check
-     * @return boolean true if the player does have legal moves, false otherwise
+     *                  el jugador a comprobar
+     * @return boolean true si el jugador tiene movimientos legales, false en caso contrario
      */
     public boolean playerHasLegalMoves(int playerNum) {
         ArrayList<ChessGamePiece> pieces;
@@ -105,11 +119,14 @@ public class ChessGameEngine {
         return false;
     }
 
+    
+    
+    
     /**
-     * Checks if the last-clicked piece is a valid piece (i.e. if it is
-     * the correct color and if the user actually clicked ON a piece.)
+     * Comprueba si la última pieza pulsada es una pieza válida (es decir, si es del color correcto y si el usuario ha pulsado sobre una pieza).
+     * el color correcto y si el usuario realmente hizo clic en una pieza).
      * 
-     * @return boolean true if the piece is valid, false otherwise
+     * @return boolean true si la pieza es válida, false en caso contrario
      */
     private boolean selectedPieceIsValid() {
         if (currentPiece == null) // user tried to select an empty square
@@ -132,14 +149,17 @@ public class ChessGameEngine {
         }
     }
 
+    
+    
+    
     /**
-     * Determines if the requested King is in check.
+     * Determina si el Rey solicitado está en jaque.
      *
      * @param checkCurrent
-     *                     if true, will check if the current king is in check if
-     *                     false,
-     *                     will check if the other player's king is in check.
-     * @return true if the king is in check, false otherwise
+     *                     si es true, comprobará si el rey actual está en jaque si
+     *                     falso,
+     *                     comprobará si el rey del otro jugador está en jaque.
+     * @return true si el rey está en jaque, false en caso contrario
      */
     public boolean isKingInCheck(boolean checkCurrent) {
         if (checkCurrent) {
@@ -155,13 +175,16 @@ public class ChessGameEngine {
         }
     }
 
+    
+    
+    
     /**
-     * Asks the user if they want to play again - if they don't, the game exits.
+     * Pregunta al usuario si quiere volver a jugar - si no, el juego sale.
      *
      * @param endGameStr
-     *                   the string to display to the user (i.e. stalemate,
-     *                   checkmate,
-     *                   etc)
+     * la cadena para mostrar al usuario (es decir, tablas,
+     * jaque mate,
+     * etc)
      */
     private void askUserToPlayAgain(String endGameStr) {
         int resp = JOptionPane.showConfirmDialog(board.getParent(), endGameStr
@@ -174,10 +197,13 @@ public class ChessGameEngine {
         }
     }
 
+    
+    
+    
     /**
-     * Determines if the game should continue (i.e. game is in check or is
-     * 'normal'). If it should not, the user is asked to play again (see above
-     * method).
+     * Determina si el juego debe continuar (es decir, el juego está en jaque o es
+     * 'normal'). Si no debe, se pide al usuario que juegue de nuevo (véase más arriba
+     * método).
      */
     private void checkGameConditions() {
         int origPlayer = currentPlayer;
@@ -208,12 +234,16 @@ public class ChessGameEngine {
         nextTurn();
     }
 
+    
+    
+    
+    
     /**
-     * Determines if the game is lost. Returns 1 or 2 for the losing player, -1
-     * for stalemate, or 0 for a still valid game.
+     * Determina si se ha perdido la partida. Devuelve 1 o 2 para el jugador perdedor, -1
+     * para el estancamiento, o 0 para un juego todavía válido.
      *
-     * @return int 1 or 2 for the losing play, -1 for stalemate, or 0 for a
-     *         still valid game.
+     * @return int 1 o 2 para la jugada perdedora, -1 para tablas, o 0 para una
+     * partida aún válida.
      */
     public int determineGameLost() {
         if (king1.isChecked(board) && !playerHasLegalMoves(1)) // player 1
@@ -236,14 +266,18 @@ public class ChessGameEngine {
         return 0; // game is still in play
     }
 
+    
+    
+    
+    
     // ----------------------------------------------------------
     /**
-     * Given a MouseEvent from a user clicking on a square, the appropriate
-     * action is determined. Actions include: moving a piece, showing the possi
-     * ble moves of a piece, or ending the game after checking game conditions.
+     * Dado un MouseEvent de un usuario haciendo click en un cuadrado, se determina la acción apropiada.
+     * acción apropiada. Las acciones incluyen: mover una pieza, mostrar los posibles movimientos de una pieza, o finalizar la partida después de comprobar las condiciones del juego.
+     * posibles movimientos de una pieza, o terminar el juego después de comprobar las condiciones de juego.
      *
      * @param e
-     *          the mouse event from the listener
+     * el evento de ratón del oyente
      */
     public void determineActionFromSquareClick(MouseEvent e) {
         BoardSquare squareClicked = (BoardSquare) e.getSource();

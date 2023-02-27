@@ -4,20 +4,15 @@ import javax.swing.*;
 
 // -------------------------------------------------------------------------
 /**
- * Shows the GUI for the Chess game.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
+ * Muestra la GUI del juego de Ajedrez.
  */
 public class ChessMain {
     // ----------------------------------------------------------
     /**
-     * Creates the GUI for Chess.
+     * Crea la interfaz gráfica de Chess.
      * 
      * @param args
-     *             command line arguments, not used
+     *             argumentos de línea de comandos, no utilizados
      */
     public static void main(String[] args) {
         JFrame frame = new JFrame("YetAnotherChessGame 1.0");

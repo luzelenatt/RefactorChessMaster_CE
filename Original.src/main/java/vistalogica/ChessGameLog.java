@@ -6,13 +6,9 @@ import java.util.Date;
 
 // -------------------------------------------------------------------------
 /**
- * A scrollable textArea representing the game log. (i.e. moves made by each
- * player)
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
+ * Un área de texto desplazable que representa el registro del juego. (es decir, los movimientos realizados por cada
+ * jugador)
+ *
  */
 public class ChessGameLog
         extends JScrollPane {
@@ -20,7 +16,7 @@ public class ChessGameLog
 
     // ----------------------------------------------------------
     /**
-     * Create a new ChessGameLog object.
+     * Crea un nuevo objeto ChessGameLog.
      */
     public ChessGameLog() {
         super(
@@ -32,10 +28,10 @@ public class ChessGameLog
 
     // ----------------------------------------------------------
     /**
-     * Adds a new line of text to the log.
+     * Añade una nueva línea de texto al registro.
      * 
      * @param s
-     *          the line of text to add
+     * la línea de texto a añadir
      */
     public void addToLog(String s) {
         if (textArea.getText().length() > 0) {
@@ -47,7 +43,7 @@ public class ChessGameLog
     }
 
     /**
-     * Clears the log.
+     * Borra el registro.
      */
     public void clearLog() {
         textArea.setText("");
@@ -55,9 +51,9 @@ public class ChessGameLog
 
     // ----------------------------------------------------------
     /**
-     * Gets the most recent statement added to the log.
+     * Obtiene la declaración más reciente añadida al registro.
      * 
-     * @return String the most recent log statement
+     * @return String la sentencia más reciente del registro
      */
     public String getLastLog() {
         int indexOfLastNewLine = textArea.getText().lastIndexOf("\n");

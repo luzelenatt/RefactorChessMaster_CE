@@ -8,37 +8,32 @@ import vistainterfaz.board.ChessGameBoard;
 
 // -------------------------------------------------------------------------
 /**
- * Class to represent the Bishop piece.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
+ * Clase para representar la pieza Alfil.
  */
 public class Bishop extends ChessGamePiece {
     /**
-     * Creates a new Bishop object.
+     * Crea un nuevo objeto Bishop.
      * 
      * @param board
-     *              board the board to create the bishop on
+     *              tablero el tablero donde crear el alfil
      * @param row
-     *              row location of the Bishop
+     *              ubicación de la fila del alfil
      * @param col
-     *              col location of the Bishop
+     *              col ubicación del alfil
      * @param color
-     *              either GamePiece.WHITE, BLACK, or UNASSIGNED
+     *              ya sea GamePiece.WHITE, BLACK, o UNASSIGNED
      */
     public Bishop(ChessGameBoard board, int row, int col, int color) {
         super(board, row, col, color);
     }
 
     /**
-     * Calculates the possible moves for this piece. These are ALL the possible
-     * moves, including illegal (but at the same time valid) moves.
+     * Calcula los movimientos posibles para esta pieza. Estos son TODOS los posibles
+     * movimientos, incluyendo los movimientos ilegales (pero al mismo tiempo válidos).
      * 
      * @param board
-     *              the game board to calculate moves on
-     * @return ArrayList<String> the moves
+     *              el tablero sobre el que calcular los movimientos
+     * @return ArrayList<String> los movimientos
      */
     @Override
     protected ArrayList<String> calculatePossibleMoves(ChessGameBoard board) {
@@ -55,9 +50,9 @@ public class Bishop extends ChessGamePiece {
     }
 
     /**
-     * Creates an icon for this piece depending on the piece's color.
+     * Crea un icono para esta pieza dependiendo del color de la pieza.
      * 
-     * @return ImageIcon the ImageIcon representation of this piece.
+     * @return ImageIcon la representación ImageIcon de esta pieza.
      */
     @Override
     public ImageIcon createImageByPieceType() {

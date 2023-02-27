@@ -9,10 +9,6 @@ import vistainterfaz.ChessGamePiece;
 /**
  * Represents the graveyard where pieces lie after being captured.
  *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public class ChessGraveyard
         extends JPanel {
