@@ -11,12 +11,7 @@ import vistalogica.ChessMenuBar;
 
 // -------------------------------------------------------------------------
 /**
- * The main panel of the Chess game.
- * 
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
+ * El panel principal del juego Ajedrez.
  */
 public class ChessPanel
         extends JPanel {
@@ -27,9 +22,13 @@ public class ChessPanel
     private ChessGraveyard playerTwoGraveyard;
     private ChessGameEngine gameEngine;
 
+    
+    
+    
+    
     // ----------------------------------------------------------
     /**
-     * Create a new ChessPanel object.
+     * Crea un nuevo objeto ChessPanel.
      */
     public ChessPanel() {
         this.setLayout(new BorderLayout());
@@ -47,43 +46,51 @@ public class ChessPanel
         gameEngine = new ChessGameEngine(gameBoard); // start the game
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the logger object for use in other classes.
+     * Obtiene el objeto logger para su uso en otras clases.
      * 
-     * @return ChessGameLog the ChessGameLog object
+     * @return ChessGameLog el objeto ChessGameLog
      */
     public ChessGameLog getGameLog() {
         return gameLog;
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the board object for use in other classes.
+     * Obtiene el objeto tablero para su uso en otras clases.
      * 
-     * @return ChessGameBoard the ChessGameBoard object
+     * @return ChessGameBoard el objeto ChessGameBoard
      */
     public ChessGameBoard getGameBoard() {
         return gameBoard;
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the game engine object for use in other classes
+     * Obtiene el objeto motor de juego para su uso en otras clases.
      * 
-     * @return ChessGameEngine the ChessGameEngine object
+     * @return ChessGameEngine el objeto ChessGameEngine
      */
     public ChessGameEngine getGameEngine() {
         return gameEngine;
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the appropriate graveyard object for use in other classes.
+     * Obtiene el objeto cementerio apropiado para su uso en otras clases.
      * 
      * @param whichPlayer
-     *                    the number of the player (1 or 2)
-     * @return ChessGraveyard the graveyard requested
+     * el número del jugador (1 o 2)
+     * @return ChessGraveyard el cementerio solicitado
      */
     public ChessGraveyard getGraveyard(int whichPlayer) {
         if (whichPlayer == 1) {

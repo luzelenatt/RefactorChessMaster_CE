@@ -7,12 +7,8 @@ import vistainterfaz.ChessGamePiece;
 
 // -------------------------------------------------------------------------
 /**
- * Represents a cell on the chess board. Holds a game piece.
+ * Representa una casilla en el tablero de ajedrez. Contiene una pieza de juego.
  *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public class BoardSquare
         extends JPanel {
@@ -21,16 +17,19 @@ public class BoardSquare
     private ChessGamePiece piece;
     private JLabel imageLabel;
 
+    
+    
+    
     // ----------------------------------------------------------
     /**
-     * Create a new BoardSquare object.
+     * Crea un nuevo objeto BoardSquare.
      *
      * @param row
-     *              the row
+     * la fila
      * @param col
-     *              the column
+     * la columna
      * @param piece
-     *              the game piece
+     * la pieza del juego
      */
     public BoardSquare(int row, int col, ChessGamePiece piece) {
         super();
@@ -40,8 +39,11 @@ public class BoardSquare
         updateImage();
     }
 
+    
+    
+    
     /**
-     * Updates the image for this BoardSquare.
+     * Actualiza la imagen de este BoardSquare.
      */
     private void updateImage() {
         if (imageLabel != null) {
@@ -56,11 +58,13 @@ public class BoardSquare
         // to redraw...
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the row number.
+     * Obtiene el número de fila.
      *
-     * @return int the row number
+     * @return int el número de fila
      */
     public int getRow() {
         return row;
@@ -68,19 +72,21 @@ public class BoardSquare
 
     // ----------------------------------------------------------
     /**
-     * Gets the column number.
+     * Obtiene el número de columna.
      *
-     * @return int the column number
+     * @return int el número de columna
      */
     public int getColumn() {
         return col;
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Gets the piece on this square
+     * Obtiene la pieza en esta casilla
      *
-     * @return GamePiece the piece
+     * @return GamePiece la pieza
      */
     public ChessGamePiece getPieceOnSquare() {
         return piece;
@@ -88,19 +94,21 @@ public class BoardSquare
 
     // ----------------------------------------------------------
     /**
-     * Sets the piece on this square
+     * Establece la pieza en esta casilla
      *
      * @param p
-     *          the piece
+     * la pieza
      */
     public void setPieceOnSquare(ChessGamePiece p) {
         piece = p;
         updateImage();
     }
 
+    
+    
     // ----------------------------------------------------------
     /**
-     * Clears this square, removing the icon and the piece.
+     * Borra esta casilla, eliminando el icono y la pieza.
      */
     public void clearSquare() {
         piece = null;

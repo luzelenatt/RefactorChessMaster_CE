@@ -11,10 +11,6 @@ import java.util.ArrayList;
 /**
  * Represents a King game piece.
  *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public class King
         extends ChessGamePiece {
