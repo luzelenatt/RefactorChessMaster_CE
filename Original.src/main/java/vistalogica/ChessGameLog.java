@@ -6,8 +6,8 @@ import java.util.Date;
 
 // -------------------------------------------------------------------------
 /**
- * Un área de texto desplazable que representa el registro del juego
- * Movimiento realizados por cada jugador
+ * Un área de texto desplazable que representa el registro del juego. (es decir, los movimientos realizados por cada
+ * jugador)
  *
  */
 public class ChessGameLog
