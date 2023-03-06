@@ -20,7 +20,7 @@ public class ChessPanel
     private ChessGameLog gameLog;
     private ChessGraveyard playerOneGraveyard;
     private ChessGraveyard playerTwoGraveyard;
-    private ChessGameEngine gameEngine;
+    private transient ChessGameEngine gameEngine;
 
 
     /**
