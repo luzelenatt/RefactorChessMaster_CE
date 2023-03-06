@@ -10,43 +10,39 @@ import vistalogica.ChessGraveyard;
 
 // -------------------------------------------------------------------------
 /**
- * Abstract class that is used to represent a game piece on the chess board.
- * Classes to extend this piece are Rook, Bishop, Knight, Queen, King and Pawn.
- * Also contains a large number of methods to determine information about cells
- * around this piece.
+ * Clase abstracta que se utiliza para representar una pieza de juego en el tablero de ajedrez.
+ * Las clases que extienden esta pieza son Torre, Alfil, Caballo, Reina, Rey y Peón.
+ * También contiene un gran número de métodos para determinar información sobre las celdas
+ * alrededor de esta pieza.
  *
- * @author Ben Katz (bakatz)
- * @author Myles David II (davidmm2)
- * @author Danielle Bushrow (dbushrow)
- * @version 2010.11.17
  */
 public abstract class ChessGamePiece {
     private boolean skipMoveGeneration;
     private int pieceColor;
     private ImageIcon pieceImage;
     /**
-     * The list of possible moves for this piece. Updated when actions involving
-     * this piece occur. (created, moved, selected, etc)
+     * La lista de movimientos posibles para esta pieza. Se actualiza cuando ocurren acciones que implican
+     * esta pieza ocurren. (creada, movida, seleccionada, etc)
      */
     protected ArrayList<String> possibleMoves;
     /**
-     * The game piece's row.
+     * La fila de la pieza de juego.
      */
     protected int pieceRow;
     /**
-     * The game piece's column.
+     * La columna de la pieza de juego.
      */
     protected int pieceColumn;
     /**
-     * Represents a black piece as an int
+     * Representa una pieza negra como un int
      */
     public static final int BLACK = 0;
     /**
-     * Represents a white piece as an int
+     * Representa una pieza blanca como un int
      */
     public static final int WHITE = 1;
     /**
-     * Represents a piece that has not been assigned a color
+     * Representa una pieza a la que no se le ha asignado un color.
      */
     static final int UNASSIGNED = -1;
 
