@@ -140,7 +140,7 @@ public class ChessGameEngine {
             }
             return false;
         } else
-        // white player
+
         {
             if (currentPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
                 return true;
@@ -193,7 +193,7 @@ public class ChessGameEngine {
             reset();
         } else {
             board.resetBoard(false);
-            // System.exit(0);
+
         }
     }
 
@@ -228,7 +228,7 @@ public class ChessGameEngine {
                         JOptionPane.WARNING_MESSAGE);
             }
             currentPlayer = currentPlayer == 1 ? 2 : 1;
-            // check the next player's conditions as well.
+
         }
         currentPlayer = origPlayer;
         nextTurn();
@@ -247,12 +247,12 @@ public class ChessGameEngine {
      */
     public int determineGameLost() {
         if (king1.isChecked(board) && !playerHasLegalMoves(1)) // player 1
-        // loss
+
         {
             return 1;
         }
         if (king2.isChecked(board) && !playerHasLegalMoves(2)) // player 2
-        // loss
+
         {
             return 2;
         }
@@ -263,7 +263,7 @@ public class ChessGameEngine {
         {
             return -1;
         }
-        return 0; // game is still in play
+        return 0; 
     }
 
     
