@@ -17,11 +17,6 @@ import vistainterfaz.pieces.Rook;
 
 import java.awt.GridLayout;
 
-// -------------------------------------------------------------------------
-/**
-* El panel que representa el tablero de Ajedrez. Contiene algunos métodos que
- * permiten a otras clases acceder al tablero físico.
- */
 public class ChessGameBoard extends JPanel {
     private BoardSquare[][] chessCells;
     private BoardListener listener;
@@ -136,10 +131,9 @@ public class ChessGameBoard extends JPanel {
      * Limpia el tablero de todos los elementos, incluyendo las piezas que quedan en el
      * cementerio, y todos los viejos registros de juego.
      * 
-     * @param addAfterReset si es true, el tablero añadirá los BoardSquares
-     * de nuevo al tablero, si es false simplemente reiniciará
-     * todo y dejará
-     * el tablero en blanco.
+     * @param addAfterReset 
+     * si es true, el tablero añadirá los BoardSquares
+     * de nuevo al tablero, si es false simplemente reiniciará todo y dejará el tablero en blanco.
      */
     public void resetBoard(boolean addAfterReset) {
         chessCells = new BoardSquare[8][8];
