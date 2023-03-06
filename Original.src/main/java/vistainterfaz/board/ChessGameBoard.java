@@ -17,46 +17,22 @@ import vistainterfaz.pieces.Rook;
 
 import java.awt.GridLayout;
 
-// -------------------------------------------------------------------------
-/**
-* El panel que representa el tablero de Ajedrez. Contiene algunos métodos que
- * permiten a otras clases acceder al tablero físico.
- */
 public class ChessGameBoard extends JPanel {
     private BoardSquare[][] chessCells;
     private BoardListener listener;
 
-    // ----------------------------------------------------------
-    /**
-     * Devuelve el tablero completo.
-     *
-     * @return BoardSquare[][] el tablero de ajedrez
-     */
     public BoardSquare[][] getCells() {
         return chessCells;
     }
 
-    /**
-     * Comprueba que la fila y la columna son índices válidos.
-     * 
-     * @param row la fila a comprobar
-     * @param col la columna a comprobar
-     * @return boolean true si son válidos, false en caso contrario
-     */
+
     private boolean validateCoordinates(int row, int col) {
         return chessCells.length > 0 && chessCells[0].length > 0 &&
                 row < chessCells.length && col < chessCells[0].length
                 && row >= 0 && col >= 0;
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Obtiene el BoardSquare en la fila 'row' y la columna 'col'.
-     * 
-     * @param row la fila a mirar
-     * @param col la columna a mirar
-     * @return BoardSquare el cuadrado encontrado, o null si no existe
-     */
+
     public BoardSquare getCell(int row, int col) {
         if (validateCoordinates(row, col)) {
             return chessCells[row][col];
@@ -64,13 +40,7 @@ public class ChessGameBoard extends JPanel {
         return null;
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Borra la celda en 'row', 'col'.
-     * 
-     * @param row la fila a mirar
-     * @param col la columna a mirar
-     */
+
     public void clearCell(int row, int col) {
         if (validateCoordinates(row, col)) {
             chessCells[row][col].clearSquare();
@@ -81,12 +51,6 @@ public class ChessGameBoard extends JPanel {
         }
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Obtiene todas las piezas de juego blancas en el tablero.
-     *
-     * @return ArrayList<GamePiece> las piezas
-     */
     public ArrayList<ChessGamePiece> getAllWhitePieces() {
         ArrayList<ChessGamePiece> whitePieces = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -100,12 +64,6 @@ public class ChessGameBoard extends JPanel {
         return whitePieces;
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Obtiene todas las piezas negras del tablero
-     *
-     * @return ArrayList<GamePiece> las piezas
-     */
     public ArrayList<ChessGamePiece> getAllBlackPieces() {
         ArrayList<ChessGamePiece> blackPieces = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
@@ -119,10 +77,7 @@ public class ChessGameBoard extends JPanel {
         return blackPieces;
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Crea un nuevo objeto ChessGameBoard.
-     */
+
     public ChessGameBoard() {
         this.setLayout(new GridLayout(8, 8, 1, 1));
         listener = new BoardListener();
@@ -131,16 +86,7 @@ public class ChessGameBoard extends JPanel {
     }
 
     
-    // ----------------------------------------------------------
-    /**
-     * Limpia el tablero de todos los elementos, incluyendo las piezas que quedan en el
-     * cementerio, y todos los viejos registros de juego.
-     * 
-     * @param addAfterReset si es true, el tablero añadirá los BoardSquares
-     * de nuevo al tablero, si es false simplemente reiniciará
-     * todo y dejará
-     * el tablero en blanco.
-     */
+
     public void resetBoard(boolean addAfterReset) {
         chessCells = new BoardSquare[8][8];
         this.removeAll();
@@ -164,13 +110,9 @@ public class ChessGameBoard extends JPanel {
             }
         }
         repaint();
-        // only the combination of these two calls work...*shrug*
     }
 
-    /**
-     * (Re)inicializa este ChessGameBoard a su diseño por defecto con todas las 32
-     * piezas añadidas.
-     */
+
     public void initializeBoard() {
         resetBoard(false);
         for (int i = 0; i < chessCells.length; i++) {
@@ -211,10 +153,7 @@ public class ChessGameBoard extends JPanel {
         }
     }
 
-    // ----------------------------------------------------------
-    /**
-     * Borra los colores del tablero.
-     */
+
     public void clearColorsOnBoard() {
         for (int i = 0; i < chessCells.length; i++) {
             for (int j = 0; j < chessCells[0].length; j++) {
@@ -229,17 +168,9 @@ public class ChessGameBoard extends JPanel {
 
     
     
-    /**
-     * Escucha los clics en BoardSquares.
-     */
     private class BoardListener
             implements MouseListener {
-    	/**
-         * Realiza una acción cuando se pulsa el botón izquierdo del ratón.
-         *
-         * @param e
-         * el evento del listener
-         */
+
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == MouseEvent.BUTTON1 &&
                     getParent() instanceof ChessPanel) {
@@ -248,40 +179,20 @@ public class ChessGameBoard extends JPanel {
             }
         }
 
-        /**
-         * Método no utilizado.
-         *
-         * @param e
-         * el evento de ratón del listener
-         */
-        public void mouseEntered(MouseEvent e) { /* not used */
+
+        public void mouseEntered(MouseEvent e) {
         }
 
-        /**
-         * Método no utilizado.
-         *
-         * @param e
-         * el evento de ratón del listener
-         */
-        public void mouseExited(MouseEvent e) { /* not used */
+
+        public void mouseExited(MouseEvent e) { 
         }
 
-        /**
-         * Método no utilizado.
-         *
-         * @param e
-         * el evento de ratón del listener
-         */
-        public void mousePressed(MouseEvent e) { /* not used */
+
+        public void mousePressed(MouseEvent e) {
         }
 
-        /**
-         * Método no utilizado.
-         *
-         * @param e
-         * el evento de ratón del listener
-         */
-        public void mouseReleased(MouseEvent e) { /* not used */
+
+        public void mouseReleased(MouseEvent e) {
         }
     }
 }
