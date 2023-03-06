@@ -17,11 +17,16 @@ import vistainterfaz.pieces.Rook;
 
 import java.awt.GridLayout;
 
+// -------------------------------------------------------------------------
+/**
+* El panel que representa el tablero de Ajedrez. Contiene algunos métodos que
+ * permiten a otras clases acceder al tablero físico.
+ */
 public class ChessGameBoard extends JPanel {
     private BoardSquare[][] chessCells;
-    private transient BoardListener listener;
+    private BoardListener listener;
 
-
+    // ----------------------------------------------------------
     /**
      * Devuelve el tablero completo.
      *
@@ -44,7 +49,7 @@ public class ChessGameBoard extends JPanel {
                 && row >= 0 && col >= 0;
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Obtiene el BoardSquare en la fila 'row' y la columna 'col'.
      * 
@@ -59,7 +64,7 @@ public class ChessGameBoard extends JPanel {
         return null;
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Borra la celda en 'row', 'col'.
      * 
@@ -76,7 +81,7 @@ public class ChessGameBoard extends JPanel {
         }
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Obtiene todas las piezas de juego blancas en el tablero.
      *
@@ -95,7 +100,7 @@ public class ChessGameBoard extends JPanel {
         return whitePieces;
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Obtiene todas las piezas negras del tablero
      *
@@ -114,7 +119,7 @@ public class ChessGameBoard extends JPanel {
         return blackPieces;
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Crea un nuevo objeto ChessGameBoard.
      */
@@ -126,9 +131,15 @@ public class ChessGameBoard extends JPanel {
     }
 
     
-
+    // ----------------------------------------------------------
     /**
-     * @param addAfterReset 
+     * Limpia el tablero de todos los elementos, incluyendo las piezas que quedan en el
+     * cementerio, y todos los viejos registros de juego.
+     * 
+     * @param addAfterReset si es true, el tablero añadirá los BoardSquares
+     * de nuevo al tablero, si es false simplemente reiniciará
+     * todo y dejará
+     * el tablero en blanco.
      */
     public void resetBoard(boolean addAfterReset) {
         chessCells = new BoardSquare[8][8];
@@ -200,7 +211,7 @@ public class ChessGameBoard extends JPanel {
         }
     }
 
-
+    // ----------------------------------------------------------
     /**
      * Borra los colores del tablero.
      */

@@ -128,15 +128,24 @@ public class ChessGameEngine {
      * 
      * @return boolean true si la pieza es válida, false en caso contrario
      */
-    private boolean selectedPieceIsValid() { //REFACTORIZADO
+    private boolean selectedPieceIsValid() {
         if (currentPiece == null) // user tried to select an empty square
-        {   return false;
+        {
+            return false;
         }
         if (currentPlayer == 2) // black player
-        {   return currentPiece.getColorOfPiece() == ChessGamePiece.BLACK; 
-        
-        } else {
-             return currentPiece.getColorOfPiece() == ChessGamePiece.WHITE; 
+        {
+            if (currentPiece.getColorOfPiece() == ChessGamePiece.BLACK) {
+                return true;
+            }
+            return false;
+        } else
+        // white player
+        {
+            if (currentPiece.getColorOfPiece() == ChessGamePiece.WHITE) {
+                return true;
+            }
+            return false;
         }
     }
 
@@ -184,7 +193,7 @@ public class ChessGameEngine {
             reset();
         } else {
             board.resetBoard(false);
-
+            // System.exit(0);
         }
     }
 
@@ -219,7 +228,7 @@ public class ChessGameEngine {
                         JOptionPane.WARNING_MESSAGE);
             }
             currentPlayer = currentPlayer == 1 ? 2 : 1;
-
+            // check the next player's conditions as well.
         }
         currentPlayer = origPlayer;
         nextTurn();
@@ -238,12 +247,12 @@ public class ChessGameEngine {
      */
     public int determineGameLost() {
         if (king1.isChecked(board) && !playerHasLegalMoves(1)) // player 1
-
+        // loss
         {
             return 1;
         }
         if (king2.isChecked(board) && !playerHasLegalMoves(2)) // player 2
-
+        // loss
         {
             return 2;
         }
@@ -254,7 +263,7 @@ public class ChessGameEngine {
         {
             return -1;
         }
-        return 0; 
+        return 0; // game is still in play
     }
 
     
@@ -275,43 +284,30 @@ public class ChessGameEngine {
         ChessGamePiece pieceOnSquare = squareClicked.getPieceOnSquare();
         board.clearColorsOnBoard();
         if (firstClick) {
-            handleFirstClick(squareClicked);
-        	
-        } else {
-        	handleSecondClick(squareClicked, pieceOnSquare);
-        }    
-    }
-    
-    
-    private void handleFirstClick(BoardSquare squareClicked) {
-    	currentPiece = squareClicked.getPieceOnSquare();
-        
-    	if (selectedPieceIsValid()) {
-            currentPiece.showLegalMoves(board);
-            squareClicked.setBackground(Color.GREEN);
-            firstClick = false;
-        } else {
-        	String message;
-            if (currentPiece != null) {
-                    message = "You tried to pick up the other player's piece! " + "Get some glasses and pick a valid square.";
-                          //  "Illegal move",
-                          //  JOptionPane.ERROR_MESSAGE);
+            currentPiece = squareClicked.getPieceOnSquare();
+            if (selectedPieceIsValid()) {
+                currentPiece.showLegalMoves(board);
+                squareClicked.setBackground(Color.GREEN);
+                firstClick = false;
+            } else {
+                if (currentPiece != null) {
+                    JOptionPane.showMessageDialog(
+                            squareClicked,
+                            "You tried to pick up the other player's piece! "
+                                    + "Get some glasses and pick a valid square.",
+                            "Illegal move",
+                            JOptionPane.ERROR_MESSAGE);
                 } else {
-                   // JOptionPane.showMessageDialog(
-                     //squareClicked,
-                    message = "You tried to pick up an empty square! " + "Get some glasses and pick a valid square.";
-                            //"Illegal move",
-                            //JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(
+                            squareClicked,
+                            "You tried to pick up an empty square! "
+                                    + "Get some glasses and pick a valid square.",
+                            "Illegal move",
+                            JOptionPane.ERROR_MESSAGE);
                 }
-               JOptionPane.showMessageDialog(squareClicked, message,
-               "Illegal move", JOptionPane.ERROR_MESSAGE);
             }
-        } 
-    	
-    
-    private void handleSecondClick(BoardSquare squareClicked, ChessGamePiece pieceOnSquare)
-    	{
-            if (pieceOnSquare == null || 
+        } else {
+            if (pieceOnSquare == null ||
                     !pieceOnSquare.equals(currentPiece)) // moving
             {
                 boolean moveSuccessful = currentPiece.move(
@@ -323,14 +319,14 @@ public class ChessGameEngine {
                 } else {
                     int row = squareClicked.getRow();
                     int col = squareClicked.getColumn();
-                    //JOptionPane.showMessageDialog(
-                    //squareClicked,
-                    String message = "The move to row " + (row + 1) + " and column "
+                    JOptionPane.showMessageDialog(
+                            squareClicked,
+                            "The move to row " + (row + 1) + " and column "
                                     + (col + 1)
                                     + " is either not valid or not legal "
                                     + "for this piece. Choose another move location, "
-                                    + "and try using your brain this time!";
-                            JOptionPane.showMessageDialog(squareClicked, message, "Invalid move",
+                                    + "and try using your brain this time!",
+                            "Invalid move",
                             JOptionPane.ERROR_MESSAGE);
                 }
                 firstClick = true;
@@ -340,5 +336,5 @@ public class ChessGameEngine {
                 firstClick = true;
             }
         }
-    
+    }
 }

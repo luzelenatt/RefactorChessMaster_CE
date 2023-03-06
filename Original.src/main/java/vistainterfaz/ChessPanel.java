@@ -20,9 +20,13 @@ public class ChessPanel
     private ChessGameLog gameLog;
     private ChessGraveyard playerOneGraveyard;
     private ChessGraveyard playerTwoGraveyard;
-    private transient ChessGameEngine gameEngine;
+    private ChessGameEngine gameEngine;
 
-
+    
+    
+    
+    
+    // ----------------------------------------------------------
     /**
      * Crea un nuevo objeto ChessPanel.
      */
@@ -43,6 +47,8 @@ public class ChessPanel
     }
 
     
+    
+    // ----------------------------------------------------------
     /**
      * Obtiene el objeto logger para su uso en otras clases.
      * 
@@ -52,6 +58,9 @@ public class ChessPanel
         return gameLog;
     }
 
+    
+    
+    // ----------------------------------------------------------
     /**
      * Obtiene el objeto tablero para su uso en otras clases.
      * 
@@ -62,6 +71,8 @@ public class ChessPanel
     }
 
     
+    
+    // ----------------------------------------------------------
     /**
      * Obtiene el objeto motor de juego para su uso en otras clases.
      * 
@@ -71,7 +82,9 @@ public class ChessPanel
         return gameEngine;
     }
 
-
+    
+    
+    // ----------------------------------------------------------
     /**
      * Obtiene el objeto cementerio apropiado para su uso en otras clases.
      * 
