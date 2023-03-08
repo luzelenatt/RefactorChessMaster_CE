@@ -62,4 +62,6 @@ public class ChessGameLog
         }
         return textArea.getText().substring(indexOfLastNewLine + 1);
     }
+
+
 }
